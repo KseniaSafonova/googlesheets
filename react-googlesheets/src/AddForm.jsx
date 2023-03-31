@@ -8,36 +8,6 @@ import axios from 'axios';
 
 const titles = ['Машина', 'Номер', 'Имя', 'Телефон', 'Квартира', 'Сатус оплаты']
 
-// function AddForm() {
-//     const [carValue, setCarValue] = useState('');
-//     const [numberValue, setNumberValue] = useState('');
-//     const [nameValue, setNameValue] = useState('');
-//     const [phoneValue, setPhoneValue] = useState('');
-//     const [apartmentValue, setApartmentValue] = useState('');
-//     const [paymentValue, setPaymentValue] = useState('');
-
-// const HandleChangeCar = (event) => {
-//     setCarValue(event.target.value)
-// }
-
-// const HandleChangeNumber = (event) => {
-//     setNumberValue(event.target.value)
-// }
-
-// const HandleChangeName = (event) => {
-//     setNameValue(event.target.value)
-// }
-
-// const HandleChangePhone = (event) => {
-//     setPhoneValue(event.target.value)
-// }
-
-// const HandleChangeApartment = (event) => {
-//     setApartmentValue(event.target.value)
-// }
-
-
-
 export default class AddForm extends Component {
     constructor(props) {
         super(props)
@@ -65,22 +35,10 @@ export default class AddForm extends Component {
             })
     }
 
-
-    // return (
     render() {
         const { carValue, numberValue, nameValue, phoneValue, apartmentValue } = this.state;
         return (
             <>
-                {/* <h2>Добавить позицию</h2>
-            {
-                titles.map((title) =>
-                    <div>
-                        <div>{title}</div>
-                        <AddFormInput />
-                    </div>
-                )
-            } */}
-
                 <Form onSubmit={this.HandleSubmit}>
                     <Form.Field>
                         <label>Машина</label>
