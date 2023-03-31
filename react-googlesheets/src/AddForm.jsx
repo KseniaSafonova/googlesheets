@@ -31,11 +31,15 @@ export default class AddForm extends Component {
         //     })
     }
 
+    // closeAddForm = () => {
+    //     console.log('close')
+    // }
+
     render() {
         const { carValue, numberValue, nameValue, phoneValue, apartmentValue, closeAddForm } = this.state;
         return (
             <>
-                <Form onSubmit={this.HandleSubmit}>
+                {/* <Form onSubmit={this.HandleSubmit}>
                     <Form.Field>
                         <label>Машина</label>
                         <input onChange={this.HandleChange} value={carValue} name='carValue' />
@@ -55,14 +59,15 @@ export default class AddForm extends Component {
                     <Form.Field>
                         <label>Квартира</label>
                         <input onChange={this.HandleChange} value={apartmentValue} name='apartmentValue' />
-                    </Form.Field>
-                    {/* <Form.Field>
+                    </Form.Field> */}
+                {/* <Form.Field>
                     <label>Статус оплаты</label>
                     <input onChange={HandleChange} value={paymentValue}/>
                 </Form.Field> */}
-                    <Button basic onClick={closeAddForm}>Отменить</Button>
-                    <Button type='submit' basic color='violet' >Отправить</Button>
-                </Form>
+                {/* <Button type='submit' basic color='violet' >Отправить</Button>
+                </Form> */}
+                {/* <Button basic onClick={closeAddForm}>Отменить</Button> */}
+                <Button basic onClick={closeAddForm}>Отменить</Button>
             </>
         )
     }
