@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-import { useState } from "react";
 import { Form, Button } from "semantic-ui-react";
-import AddFormInput from "./AddFormInput";
-// import axios from 'https://cdn.skypack.dev/axios';
-
 import axios from 'axios';
 
 const titles = ['Машина', 'Номер', 'Имя', 'Телефон', 'Квартира', 'Сатус оплаты']
@@ -26,17 +22,17 @@ export default class AddForm extends Component {
     }
 
     HandleSubmit = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         console.log(this.state);
 
-        axios.post('https://sheet.best/api/sheets/0b377265-6ca4-4cec-ad98-c4bbcacc31ff', this.state)
-            .then(response => {
-                console.log(response);
-            })
+        // axios.post('https://sheet.best/api/sheets/0b377265-6ca4-4cec-ad98-c4bbcacc31ff', this.state)
+        //     .then(response => {
+        //         console.log(response);
+        //     })
     }
 
     render() {
-        const { carValue, numberValue, nameValue, phoneValue, apartmentValue } = this.state;
+        const { carValue, numberValue, nameValue, phoneValue, apartmentValue, closeAddForm } = this.state;
         return (
             <>
                 <Form onSubmit={this.HandleSubmit}>
@@ -64,8 +60,8 @@ export default class AddForm extends Component {
                     <label>Статус оплаты</label>
                     <input onChange={HandleChange} value={paymentValue}/>
                 </Form.Field> */}
-                    <Button basic>Отменить</Button>
-                    <Button type='submit' basic color='violet'>Отправить</Button>
+                    <Button basic onClick={closeAddForm}>Отменить</Button>
+                    <Button type='submit' basic color='violet' >Отправить</Button>
                 </Form>
             </>
         )

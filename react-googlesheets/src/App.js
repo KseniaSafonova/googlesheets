@@ -17,13 +17,12 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    // this.setState({ isLoaded: true });
 
-    axios.get('https://sheet.best/api/sheets/0b377265-6ca4-4cec-ad98-c4bbcacc31ff')
-      .then(response => {
-        console.log(response);
-        this.setState({ data: response.data, isLoaded: true })
-      })
+    // axios.get('https://sheet.best/api/sheets/0b377265-6ca4-4cec-ad98-c4bbcacc31ff')
+    //   .then(response => {
+    //     console.log(response);
+    //     this.setState({ data: response.data, isLoaded: true })
+    //   })
 
   }
 
@@ -31,23 +30,35 @@ export default class App extends Component {
     this.setState({ pressed: true })
   }
 
+  CloseAddForm = () => {
+    this.setState({ pressed: false })
+    console.log('close')
+  }
+  //вынести кнопку за пределы формы
+
   render() {
     const { isLoaded, pressed, data } = this.state;
     return (
       <div className="App">
-        <Button color='violet' onClick={this.OpenAddForm}>+ Add</Button>
-        <Search placeholder='Поиск' />
-
-        {
-          data.map((d) => <UserInfo carValue={d.carValue} phoneValue={d.phoneValue} apartmentValue={d.apartmentValue} nameValue={d.nameValue} />)
-        }
-
         {
           pressed ?
-            <AddForm />
+            <AddForm closeAddForm={this.CloseAddForm} />
             :
-            <></>
+            <>
+              <Button color='violet' onClick={this.OpenAddForm}>+ Add</Button>
+              <Search placeholder='Поиск' />
+
+              {
+                data.map((d) =>
+                  <UserInfo
+                    carValue={d.carValue}
+                    phoneValue={d.phoneValue}
+                    apartmentValue={d.apartmentValue}
+                    nameValue={d.nameValue} />)
+              }
+            </>
         }
+
       </div>
     )
   }
