@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Search, Button } from 'semantic-ui-react';
 import AddForm from './AddForm';
 import axios from 'axios';
-import './App.css';
+import './App.scss';
 import UserInfo from './UserInfo';
 
 export default class App extends Component {
@@ -34,7 +34,6 @@ export default class App extends Component {
     this.setState({ pressed: false })
     console.log('close')
   }
-  //вынести кнопку за пределы формы
 
   render() {
     const { isLoaded, pressed, data } = this.state;
@@ -42,11 +41,16 @@ export default class App extends Component {
       <div className="App">
         {
           pressed ?
-            <AddForm closeAddForm={this.CloseAddForm} />
+            <>
+              <AddForm closeAddForm={this.CloseAddForm} />
+              {/* <Button basic onClick={this.CloseAddForm} className="formCancel">Отменить</Button> */}
+            </>
             :
             <>
-              <Button color='violet' onClick={this.OpenAddForm}>+ Add</Button>
-              <Search placeholder='Поиск' />
+              <div className='topBlock'>
+                <Button color='violet' onClick={this.OpenAddForm}>+ Add</Button>
+                <Search placeholder='Поиск' />
+              </div>
 
               {
                 data.map((d) =>

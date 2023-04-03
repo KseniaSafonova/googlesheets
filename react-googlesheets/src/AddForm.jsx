@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Button } from "semantic-ui-react";
 import axios from 'axios';
+import './AddForm.scss'
 
 const titles = ['Машина', 'Номер', 'Имя', 'Телефон', 'Квартира', 'Сатус оплаты']
 
@@ -31,43 +32,43 @@ export default class AddForm extends Component {
         //     })
     }
 
-    // closeAddForm = () => {
-    //     console.log('close')
-    // }
-
     render() {
-        const { carValue, numberValue, nameValue, phoneValue, apartmentValue, closeAddForm } = this.state;
+        const { carValue, numberValue, nameValue, phoneValue, apartmentValue } = this.state;
+        const { HandleChange, closeAddForm } = this.props;
         return (
             <>
-                {/* <Form onSubmit={this.HandleSubmit}>
-                    <Form.Field>
+                <Form className='form'>
+                    {/* +валидация формы */}
+                    <Form.Field className='form__field'>
                         <label>Машина</label>
-                        <input onChange={this.HandleChange} value={carValue} name='carValue' />
+                        <input onChange={HandleChange} value={carValue} name='carValue' />
                     </Form.Field>
-                    <Form.Field>
+                    <Form.Field className='form__field'>
                         <label>Номер</label>
-                        <input onChange={this.HandleChange} value={numberValue} name='numberValue' />
+                        <input onChange={HandleChange} value={numberValue} name='numberValue' />
                     </Form.Field>
                     <Form.Field>
                         <label>Имя</label>
-                        <input onChange={this.HandleChange} value={nameValue} name='nameValue' />
+                        <input onChange={HandleChange} value={nameValue} name='nameValue' />
                     </Form.Field>
                     <Form.Field>
                         <label>Телефон</label>
-                        <input onChange={this.HandleChange} value={phoneValue} name='phoneValue' />
+                        <input onChange={HandleChange} value={phoneValue} name='phoneValue' />
                     </Form.Field>
                     <Form.Field>
                         <label>Квартира</label>
                         <input onChange={this.HandleChange} value={apartmentValue} name='apartmentValue' />
+                    </Form.Field>
+                    {/* <Form.Field>
+                        <label>Статус оплаты</label>
+                        <input onChange={HandleChange} value={paymentValue} />
                     </Form.Field> */}
-                {/* <Form.Field>
-                    <label>Статус оплаты</label>
-                    <input onChange={HandleChange} value={paymentValue}/>
-                </Form.Field> */}
-                {/* <Button type='submit' basic color='violet' >Отправить</Button>
-                </Form> */}
-                {/* <Button basic onClick={closeAddForm}>Отменить</Button> */}
-                <Button basic onClick={closeAddForm}>Отменить</Button>
+                    {/* поле статуса оплаты? */}
+                    <Button type='submit' basic color='violet' onClick={() => { this.HandleSubmit(); closeAddForm(); }}>Отправить</Button>
+                    {/* добавить значок после отправки формы */}
+                    <Button basic onClick={closeAddForm}>Оменить</Button>
+                </Form >
+
             </>
         )
     }
