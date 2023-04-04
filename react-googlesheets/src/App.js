@@ -32,7 +32,6 @@ export default class App extends Component {
 
   CloseAddForm = () => {
     this.setState({ pressed: false })
-    console.log('close')
   }
 
   render() {
@@ -43,13 +42,12 @@ export default class App extends Component {
           pressed ?
             <>
               <AddForm closeAddForm={this.CloseAddForm} />
-              {/* <Button basic onClick={this.CloseAddForm} className="formCancel">Отменить</Button> */}
             </>
             :
             <>
               <div className='topBlock'>
                 <Button color='violet' onClick={this.OpenAddForm}>+ Add</Button>
-                <Search placeholder='Поиск' />
+                <Search placeholder='Поиск' className='search' />
               </div>
 
               {
@@ -62,7 +60,6 @@ export default class App extends Component {
               }
             </>
         }
-
       </div>
     )
   }

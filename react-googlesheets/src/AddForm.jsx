@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Checkbox } from "semantic-ui-react";
 import axios from 'axios';
 import './AddForm.scss'
-
-const titles = ['Машина', 'Номер', 'Имя', 'Телефон', 'Квартира', 'Сатус оплаты']
 
 export default class AddForm extends Component {
     constructor(props) {
@@ -14,12 +12,17 @@ export default class AddForm extends Component {
             numberValue: '',
             nameValue: '',
             phoneValue: '',
-            apartmentValue: ''
+            apartmentValue: '',
+            paymentState: 'Неоплачено'
         }
     }
 
     HandleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value })
+    }
+
+    HandleChangePayment = () => {
+        this.setState({ paymentState: 'Оплачено' })
     }
 
     HandleSubmit = (event) => {
@@ -33,7 +36,7 @@ export default class AddForm extends Component {
     }
 
     render() {
-        const { carValue, numberValue, nameValue, phoneValue, apartmentValue } = this.state;
+        const { carValue, numberValue, nameValue, phoneValue, apartmentValue, paymentState } = this.state;
         const { HandleChange, closeAddForm } = this.props;
         return (
             <>
@@ -59,16 +62,13 @@ export default class AddForm extends Component {
                         <label>Квартира</label>
                         <input onChange={this.HandleChange} value={apartmentValue} name='apartmentValue' />
                     </Form.Field>
-                    {/* <Form.Field>
+                    <Form.Field>
                         <label>Статус оплаты</label>
-                        <input onChange={HandleChange} value={paymentValue} />
-                    </Form.Field> */}
-                    {/* поле статуса оплаты? */}
+                        <Checkbox toggle name='paymentState' value={paymentState} onChange={this.HandleChangePayment} />
+                    </Form.Field>
                     <Button type='submit' basic color='violet' onClick={() => { this.HandleSubmit(); closeAddForm(); }}>Отправить</Button>
-                    {/* добавить значок после отправки формы */}
                     <Button basic onClick={closeAddForm}>Оменить</Button>
                 </Form >
-
             </>
         )
     }

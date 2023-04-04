@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Segment } from "semantic-ui-react";
-
 import './UserInfo.scss'
 
 export default class UserInfo extends Component {
